@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SampleApp"
+             xmlns:esriUI="clr-namespace:Esri.ArcGISRuntime.Xamarin.Forms;assembly=Esri.ArcGISRuntime.Xamarin.Forms"
+             Title="Hello ArcGISRuntime Xamarin.Forms for WPF"
+             x:Class="SampleApp.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MapViewModel x:Key="MapViewModel" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <esriUI:MapView Map="{Binding Map, Source={StaticResource MapViewModel}}" x:Name="mapView"
+                        WidthRequest="300" HeightRequest="300" GeoViewTapped="mapView_GeoViewTapped"
+                        HorizontalOptions="Fill" VerticalOptions="Fill"
+                        />
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,44 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras/1.6.55">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net471</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'!='net471'">
+    <Product>SampleApp - .NET Standard</Product>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net471'">
+    <Product>SampleApp - .NET Framework</Product>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'!='net471'">
+    
+    <PackageReference Include="Esri.ArcGISRuntime.Xamarin.Forms" Version="100.4.0" ReferenceOutputAssembly="false">
+      <PrivateAssets>build</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581">
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net471'">
+    <ProjectReference Include="..\..\Esri.ArcGISRuntime.Xamarin.Forms\Esri.ArcGISRuntime.Xamarin.Forms.WPF.csproj" />
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581">
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+  
+  </Project>
